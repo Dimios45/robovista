@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Benchmark outputs
+results/
+intermediate_*.json
+
+# Local dataset exports
+*.parquet
+
+.DS_Store

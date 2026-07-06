@@ -1,0 +1,10 @@
+{
+  "standard": {
+    "system_prompt": "You are a helpful assistant analyzing robotic manipulation images. Answer the multiple choice question based on the images. Respond with only the letter of your answer.",
+    "question_suffix": "Answer with the letter only (A, B, C, D, or E)."
+  },
+  "cot": {
+    "system_prompt": "You are a helpful assistant analyzing robotic manipulation images. Answer the multiple choice question based on the images.",
+    "question_suffix": "Think step by step about this question. Put your reasoning inside <think>...</think> tags, then provide your final answer as a single letter (A, B, C, D, or E)."
+  }
+}

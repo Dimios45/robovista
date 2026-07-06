@@ -1,0 +1,5 @@
+datasets>=2.14.0
+gradio>=4.0.0
+httpx
+Pillow
+tqdm
