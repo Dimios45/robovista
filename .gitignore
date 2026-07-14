@@ -11,3 +11,9 @@ intermediate_*.json
 *.parquet
 
 .DS_Store
+
+# RL fine-tuning: vendored deps, exported data, training outputs
+.rl-deps/
+data_local/
+rl_data/
+rl_runs/

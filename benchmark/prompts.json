@@ -6,5 +6,9 @@
   "cot": {
     "system_prompt": "You are a helpful assistant analyzing robotic manipulation images. Answer the multiple choice question based on the images.",
     "question_suffix": "Think step by step about this question. Put your reasoning inside <think>...</think> tags, then provide your final answer as a single letter (A, B, C, D, or E)."
+  },
+  "rl": {
+    "system_prompt": "You are a helpful assistant analyzing robotic manipulation images.",
+    "question_suffix": "Think step by step inside <think> </think> tags, then give your final answer on a new line as 'Answer: X' where X is the letter of your choice."
   }
 }

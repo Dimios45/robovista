@@ -91,18 +91,10 @@ def format_question_with_choices(question: str, choices: Dict[str, str], suffix:
     return f"{question}\n\nOptions:\n{formatted_choices}\n\n{suffix}"
 
 
-def parse_answer(response: str) -> Optional[str]:
-    """Parse model response to extract the answer letter."""
-    if not response or not isinstance(response, str):
-        return None
-
+def _extract_letter(response_upper: str, strict: bool = False) -> Optional[str]:
+    """Extract an answer letter from uppercased text. With strict=True, only
+    explicit "answer is X" statements count (no loose single-letter matches)."""
     valid_letters = set(CHOICE_LETTERS)
-
-    think_match = re.search(r"</think>\s*(.*)$", response, re.IGNORECASE | re.DOTALL)
-    if think_match:
-        response = think_match.group(1)
-
-    response_upper = response.strip().upper()
 
     answer_patterns = [
         r"\b(?:THE\s+)?ANSWER\s*(?:IS|:)\s*([A-E])\b",
@@ -115,6 +107,14 @@ def parse_answer(response: str) -> Optional[str]:
         match = re.search(pattern, response_upper)
         if match:
             return match.group(1)
+
+    if strict:
+        # A committed final statement like "... the best option is D." at the
+        # very end of the text (e.g. just before a closing </think>).
+        match = re.search(r"\b(?:IS|:)\s*([A-E])\b[^A-E]{0,40}$", response_upper.rstrip())
+        if match:
+            return match.group(1)
+        return None
 
     if response_upper and response_upper[0] in valid_letters:
         if len(response_upper) == 1 or not response_upper[1].isalpha():
@@ -130,6 +130,24 @@ def parse_answer(response: str) -> Optional[str]:
             return letter
 
     return None
+
+
+def parse_answer(response: str) -> Optional[str]:
+    """Parse model response to extract the answer letter."""
+    if not response or not isinstance(response, str):
+        return None
+
+    think_match = re.search(r"</think>\s*(.*)$", response, re.IGNORECASE | re.DOTALL)
+    if think_match:
+        tail = think_match.group(1).strip().upper()
+        answer = _extract_letter(tail)
+        if answer:
+            return answer
+        # Some models state the answer inside the think block and stop at
+        # </think>; look for an explicit answer statement in the full text.
+        return _extract_letter(response.strip().upper(), strict=True)
+
+    return _extract_letter(response.strip().upper())
 
 
 def extract_response_content(message: Dict[str, Any]) -> str:
