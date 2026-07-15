@@ -181,7 +181,7 @@ def run_one(args, data_dir, questions, model, processor, prompt_config, prompt_n
     if args.icl_k:
         output_model_name = f"{output_model_name}_icl{args.icl_k}"
 
-    max_new_tokens = args.max_new_tokens or (1024 if prompt_name == "cot" else 32)
+    max_new_tokens = args.max_new_tokens or (1024 if prompt_name in ("cot", "rl") else 32)
 
     intermediate_path = output_dir / f"intermediate_{output_model_name}.json"
     existing: Dict[str, Dict[str, Any]] = {}

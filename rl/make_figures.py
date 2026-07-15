@@ -225,3 +225,70 @@ fig.savefig(OUT / "fig4_domain_heatmap.png", facecolor=PAGE, bbox_inches="tight"
 plt.close(fig)
 
 print("Wrote", *[p.name for p in sorted(OUT.glob("*.png"))])
+
+# ------------------------------------------------- fig 5: reliability diagram
+import os
+if all(os.path.exists(ROOT / "results" / f"calibration_{k}.json")
+       for k in ["base-robovista", "sft-robovista", "grpo-robovista",
+                 "base-heldout", "sft-heldout", "grpo-heldout"]):
+    def rel_curve(path, bins=10):
+        d = json.load(open(path))
+        pts = []
+        for b in range(bins):
+            lo, hi = b / bins, (b + 1) / bins
+            sel = [r for r in d["records"] if lo < r["confidence"] <= hi]
+            if len(sel) >= 8:
+                pts.append((sum(r["confidence"] for r in sel) / len(sel),
+                            sum(r["is_correct"] for r in sel) / len(sel)))
+        return pts, d["ece15"]
+
+    fig, axes_ = plt.subplots(1, 2, figsize=(10, 4.3), dpi=200)
+    fig.suptitle("Calibration — SFT becomes overconfident out-of-distribution; GRPO stays calibrated",
+                 fontsize=13, fontweight="bold", color=INK, x=0.02, ha="left")
+    for ax, suffix, title in [(axes_[0], "robovista", "RoboVista (out-of-distribution)"),
+                              (axes_[1], "heldout", "Robo2VLM held-out (in-distribution)")]:
+        ax.plot([0, 1], [0, 1], color=BASELINE, lw=1.2, ls=(0, (3, 3)), zorder=1)
+        for name, key, color in [("Base", "base", BLUE), ("SFT", "sft", AQUA), ("GRPO", "grpo", YELLOW)]:
+            pts, e = rel_curve(ROOT / "results" / f"calibration_{key}-{suffix}.json")
+            xs, ys = [p[0] for p in pts], [p[1] for p in pts]
+            ax.plot(xs, ys, color=color, lw=2, marker="o", ms=5, zorder=3,
+                    markeredgecolor=SURFACE, markeredgewidth=1.2)
+            ax.annotate(f"{name} (ECE {e:.2f})", (xs[-1], ys[-1]), xytext=(6, 0),
+                        textcoords="offset points", color=INK, fontsize=8.5,
+                        fontweight="bold", va="center")
+        ax.set_xlim(0, 1.02); ax.set_ylim(0, 1.02)
+        ax.set_title(title, loc="left", fontsize=10.5)
+        ax.set_xlabel("Model confidence (A–E softmax)", fontsize=8.5, color=MUTED)
+        ax.set_ylabel("Actual accuracy", fontsize=8.5, color=MUTED)
+        ax.xaxis.set_major_formatter(lambda v, _: f"{v:.0%}")
+        ax.yaxis.set_major_formatter(lambda v, _: f"{v:.0%}")
+        style(ax)
+    fig.tight_layout(rect=(0, 0, 0.94, 0.90))
+    fig.savefig(OUT / "fig5_reliability.png", facecolor=PAGE, bbox_inches="tight")
+    plt.close(fig)
+
+# --------------------------------------------- fig 6: answer churn (flip counts)
+CHURN = [
+    ("SFT vs base", 193, 247, AQUA),
+    ("GRPO vs base", 12, 36, YELLOW),
+]
+fig, ax = plt.subplots(figsize=(8.6, 2.9), dpi=200)
+fig.suptitle("Answer churn on RoboVista (pooled over 3 seeds) — GRPO edits surgically",
+             fontsize=12.5, fontweight="bold", color=INK, x=0.02, ha="left")
+ys = range(len(CHURN))
+for i, (name, unl, lrn, color) in enumerate(CHURN):
+    ax.barh(i + 0.18, -unl, height=0.32, color=DIV_NEG, zorder=3)
+    ax.barh(i - 0.18, lrn, height=0.32, color=DIV_POS, zorder=3)
+    ax.text(-unl - 6, i + 0.18, f"{unl} unlearned", ha="right", va="center", color=INK, fontsize=9.5, fontweight="bold")
+    ax.text(lrn + 6, i - 0.18, f"{lrn} learned", ha="left", va="center", color=INK, fontsize=9.5, fontweight="bold")
+ax.axvline(0, color=BASELINE, lw=1.4, zorder=2)
+ax.set_yticks(list(ys), [c[0] for c in CHURN], color=INK)
+ax.set_xlim(-320, 340)
+ax.set_xlabel("questions flipped right→wrong (red)  |  wrong→right (blue), of 3×474", fontsize=8.5, color=MUTED)
+ax.xaxis.set_major_formatter(lambda v, _: f"{abs(v):.0f}")
+style(ax, xgrid=True)
+fig.tight_layout(rect=(0, 0, 1, 0.86))
+fig.savefig(OUT / "fig6_answer_churn.png", facecolor=PAGE, bbox_inches="tight")
+plt.close(fig)
+
+print("Wrote fig5, fig6")

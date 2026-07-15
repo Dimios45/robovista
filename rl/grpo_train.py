@@ -186,9 +186,12 @@ def main():
 
             model.eval()
             with torch.no_grad():
+                # top_k=0 disables the top_k=1 (greedy!) that Qwen2-VL ships
+                # in its generation_config — without this, all G completions
+                # are identical and every group is degenerate.
                 out = model.generate(
                     **inputs, do_sample=True, temperature=args.temperature, top_p=args.top_p,
-                    max_new_tokens=args.max_new_tokens, use_cache=True,
+                    top_k=0, max_new_tokens=args.max_new_tokens, use_cache=True,
                 )
             completion_ids = out[:, prompt_len:]
             completions = processor.batch_decode(completion_ids, skip_special_tokens=True)
