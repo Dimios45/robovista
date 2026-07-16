@@ -131,6 +131,15 @@ Useful flags: `--max-questions 10` for a quick smoke test, `--concurrency 10` fo
 | `publication_source` | string | Source publication or dataset for the images |
 | `id` | string | Unique question id |
 
+## RoboVista-R1: RL fine-tuning experiment
+
+This repo also contains a full GRPO-vs-SFT fine-tuning study of Qwen2-VL-7B on robot
+VQA (3 seeds each, trained on a Robo2VLM-1 subset, evaluated on RoboVista): verifiable-
+reward RL transfers to unseen robot domains where SFT memorizes its templates and
+collapses. Read the story with all figures in **[rl/BLOG.md](rl/BLOG.md)**; reproduce
+everything with `MODEL_PATH=<Qwen2-VL-7B-Instruct> ./rl/reproduce.sh` (deps:
+`rl/requirements.txt`; ~12 GPU-hours on one 80 GB+ GPU).
+
 ## Citation
 
 ```bibtex

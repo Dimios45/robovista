@@ -1,0 +1,16 @@
+# Training/eval environment for the RL experiment (rl/ and benchmark/run_benchmark_local.py).
+# Tested with Python 3.9 on ROCm 6.2 (AMD MI300X); any torch 2.5.x build for your
+# accelerator works — install torch first from the matching index, e.g.:
+#   ROCm:  pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/rocm6.2
+#   CUDA:  pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu124
+torch==2.5.1
+transformers==4.48.0
+accelerate>=0.26.1
+peft==0.14.0
+Pillow
+tqdm
+
+# Data export (rl/export_robo2vlm.py, benchmark/export_local.py) and the error
+# labeler UI additionally need (can live in a separate env — see reproduce.sh):
+# datasets>=2.14.0
+# gradio>=4.0.0

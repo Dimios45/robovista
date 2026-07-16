@@ -1,0 +1,410 @@
+{
+  "q_20260124_021049_4691e2": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260125_214017_158d99": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260121_013511_53590a": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260121_000045_a2fed7": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "points2plans_q18": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "scene_understanding"
+  },
+  "points2plans_q33": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "scene_understanding"
+  },
+  "points2plans_q12": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260121_230149_c24899": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260120_234823_57e36f": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260122_103101_cacef4": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260123_205603_42f227": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260125_214720_8551ed": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260122_103207_b0608f": {
+    "label": "Format / refusal / other",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260120_204542_199d7e": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260125_014224_2b8474": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260119_211003_1930a3": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260119_093746_355edf": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "recovery_replanning_robustness"
+  },
+  "q_20260125_213542_ae14b3": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260122_103305_62bdd8": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "points2plans_q40": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": ""
+  },
+  "q_20260123_223324_616d3a": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260123_172012_11ee9d": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260123_211327_e92519": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260125_002858_a68f71": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260125_191303_5f0446": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260119_212737_708c90": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260125_181757_40c9c3": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260123_085041_b51764": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260125_032243_f89edd": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260124_205043_a273b3": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260118_193318_a4e66f": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260125_023742_b1de37": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "recovery_replanning_robustness"
+  },
+  "points2plans_q39": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": ""
+  },
+  "points2plans_q07": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260125_183929_ae997d": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260122_102832_3b31b2": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260120_204310_cf8a42": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260125_215013_53fbc2": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260119_032132_158ae6": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "recovery_replanning_robustness"
+  },
+  "points2plans_q02": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260120_055143_3910fd": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260120_231934_c77d15": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260120_160602_697da9": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260123_174935_6d59dc": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260119_163723_cfa292": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260121_031405_269c0c": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260122_104434_3ee832": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260119_141316_f971b5": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "physical_interaction"
+  },
+  "q_20260121_201824_fe804b": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260119_035059_98c361": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260122_104346_574724": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260125_213854_704ce3": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260124_150339_e0d5bd": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260125_014107_0a1ad7": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260121_023202_83ccb0": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260121_004518_6a876f": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260123_223649_1d5b18": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260125_024351_375bf5": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "recovery_replanning_robustness"
+  },
+  "q_20260124_115146_1a4d4a": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260125_031050_1d48aa": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "points2plans_q49": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260123_084512_98c650": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "points2plans_q43": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260125_031131_0997a8": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260122_103345_eb7441": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260120_022942_f51b1b": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260125_113519_073825": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260122_215719_9832f1": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260125_031215_36d9a2": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260125_181226_f8c670": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260125_022515_e0109f": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260119_205634_0d4c59": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260124_021046_7638d7": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260119_111816_5569b1": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "points2plans_q27": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260124_212910_a65501": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260121_005334_41cd17": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "recovery_replanning_robustness"
+  },
+  "q_20260121_023008_35b82b": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260120_025815_f3d03e": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260121_000947_c04945": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260122_104712_2c11e1": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260125_181518_126458": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260124_021045_91b86d": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260125_181720_cacc33": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260124_160116_3e39be": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260121_024313_f1e531": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260122_103800_a60b49": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "high_level_decision_making"
+  },
+  "points2plans_q10": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": ""
+  },
+  "points2plans_q46": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": ""
+  },
+  "q_20260119_212320_afc728": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "high_level_decision_making"
+  },
+  "points2plans_q47": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": ""
+  },
+  "points2plans_q23": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260120_022416_2d4e89": {
+    "label": "Format / refusal / other",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260122_220455_675384": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260125_023430_68ef93": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "recovery_replanning_robustness"
+  },
+  "q_20260121_001131_81d166": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "scene_understanding"
+  },
+  "q_20260122_104255_08aa7b": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260124_113234_c3bad1": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260125_185843_bda504": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "high_level_decision_making"
+  },
+  "q_20260122_102737_3f37de": {
+    "label": "Misidentification (saw the wrong thing)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260121_003038_7fd092": {
+    "label": "Task reasoning (right scene, wrong plan/logic)",
+    "ability_type": "low_level_motion_awareness"
+  },
+  "q_20260123_221325_343b5b": {
+    "label": "Spatial reasoning (right objects, wrong geometry)",
+    "ability_type": "high_level_decision_making"
+  }
+}

@@ -3,7 +3,9 @@
 
 Samples ~100 GRPO-think errors on RoboVista (stratified by ability type),
 shows each with the model's reasoning next to the expert's, and records one of
-four failure labels. Labels persist to rl_runs/error_labels.json (resume-safe).
+four failure labels. Labels persist to rl/data/error_labels.json (resume-safe,
+tracked in git — they are source data for the error taxonomy in
+error_analysis.py).
 
 Usage:
     python rl/error_labeler.py            # http://localhost:7861
@@ -24,7 +26,7 @@ LABELS = [
     "Task reasoning (right scene, wrong plan/logic)",
     "Format / refusal / other",
 ]
-LABELS_PATH = ROOT / "rl_runs" / "error_labels.json"
+LABELS_PATH = ROOT / "rl" / "data" / "error_labels.json"
 
 
 def load_errors(summary_glob, per_stratum, seed):

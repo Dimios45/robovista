@@ -6,6 +6,8 @@ Produces rl_runs/error_analysis.json + .md with:
   pair, overall and per domain — the mechanism behind SFT's domain collapse
 - answer-letter distribution shift per model vs base (chi-square statistic)
 - think-trace length vs correctness for think-format runs, by ability type
+- the human-labeled failure taxonomy (from rl/data/error_labels.json), with the
+  stratified sample reweighted to the true error population
 
 Usage:
     python rl/error_analysis.py
@@ -125,6 +127,41 @@ def main():
                                            "median_correct": med(g["c"]),
                                            "median_wrong": med(g["w"])})
             md.append(f"| {name} | {ab} | {len(g['c']) + len(g['w'])} | {med(g['c'])} | {med(g['w'])} |")
+
+    # ---- human-labeled failure taxonomy, reweighted to the error population.
+    # The labeler samples ~30 errors per ability stratum, but strata have very
+    # different error counts, so the overall estimate weights each stratum's
+    # label mix by its share of the true error population.
+    labels_path = ROOT / "rl" / "data" / "error_labels.json"
+    taxonomy_key = "qwen2vl-7b-grpo_rl"
+    rows = load(taxonomy_key)
+    if labels_path.exists() and rows:
+        labels = json.load(open(labels_path))
+        err_pop = Counter((r.get("ability_type") or "unknown")
+                          for r in rows.values() if not r.get("is_correct"))
+        total_err = sum(err_pop.values())
+        by_ab = defaultdict(Counter)
+        for v in labels.values():
+            by_ab[v.get("ability_type") or "unknown"][v["label"].split(" (")[0]] += 1
+        weighted = Counter()
+        for ab, pop in err_pop.items():
+            dist = by_ab.get(ab)
+            if not dist:
+                continue
+            tot = sum(dist.values())
+            for lab, k in dist.items():
+                weighted[lab] += (pop / total_err) * (k / tot)
+        report["taxonomy"] = {
+            "n_labeled": len(labels),
+            "labeled_model": taxonomy_key,
+            "error_population_by_ability": dict(err_pop),
+            "per_ability_composition": {ab: dict(c) for ab, c in sorted(by_ab.items())},
+            "reweighted_overall": {lab: round(w, 4) for lab, w in weighted.most_common()},
+        }
+        md += ["", f"## Human-labeled failure taxonomy ({len(labels)} errors, reweighted)", "",
+               "| Primary failure | Share |", "|---|---|"]
+        for lab, w in weighted.most_common():
+            md.append(f"| {lab} | {w:.1%} |")
 
     out = ROOT / "rl_runs"
     with open(out / "error_analysis.json", "w") as f:

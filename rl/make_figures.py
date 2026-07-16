@@ -106,16 +106,29 @@ fig.savefig(OUT / "fig1_grpo_training.png", facecolor=PAGE, bbox_inches="tight")
 plt.close(fig)
 
 # ------------------------------------------------------- fig 2: eval results (bars)
+# Accuracies come from rl_runs/stats_report.json (run `python rl/stats.py` first):
+# seed-0 for base variants, mean across seeds for the fine-tunes.
+STATS_PATH = ROOT / "rl_runs" / "stats_report.json"
+if not STATS_PATH.exists():
+    raise SystemExit("rl_runs/stats_report.json missing — run `python rl/stats.py` first")
+STATS = json.load(open(STATS_PATH))
+
+
+def run_acc(run):
+    e = STATS["runs"][run]
+    return 100 * (e["mean"] if len(e["seeds"]) > 1 else e["seeds"]["0"]["acc"])
+
+
 robovista = [
-    ("Base · letter-only", 33.5, BLUE), ("Base · CoT", 31.0, BLUE),
-    ("Base · think-format", 31.6, BLUE), ("Base · ICL k=2", 25.3, BLUE),
-    ("SFT · letter-only", 36.5, AQUA),
-    ("GRPO · letter-only", 35.2, YELLOW), ("GRPO · think-format", 32.7, YELLOW),
+    ("Base · letter-only", run_acc("base"), BLUE), ("Base · CoT", run_acc("base_cot"), BLUE),
+    ("Base · think-format", run_acc("base_rl"), BLUE), ("Base · ICL k=2", run_acc("base_icl"), BLUE),
+    ("SFT · letter-only", run_acc("sft"), AQUA),
+    ("GRPO · letter-only", run_acc("grpo"), YELLOW), ("GRPO · think-format", run_acc("grpo_rl"), YELLOW),
 ]
 heldout = [
-    ("Base · letter-only", 33.2, BLUE),
-    ("SFT · letter-only", 77.6, AQUA),
-    ("GRPO · letter-only", 39.4, YELLOW), ("GRPO · think-format", 40.6, YELLOW),
+    ("Base · letter-only", run_acc("base_h"), BLUE),
+    ("SFT · letter-only", run_acc("sft_h"), AQUA),
+    ("GRPO · letter-only", run_acc("grpo_h"), YELLOW), ("GRPO · think-format", run_acc("grpo_h_rl"), YELLOW),
 ]
 fig, (a1, a2) = plt.subplots(1, 2, figsize=(11, 4.4), dpi=200,
                              gridspec_kw={"width_ratios": [7, 4.6]})
@@ -268,9 +281,18 @@ if all(os.path.exists(ROOT / "results" / f"calibration_{k}.json")
     plt.close(fig)
 
 # --------------------------------------------- fig 6: answer churn (flip counts)
+def pooled_flips(comparison_name):
+    for c in STATS["comparisons"]:
+        if c["name"] == comparison_name:
+            return c["pooled"]["b"], c["pooled"]["c"]
+    raise KeyError(comparison_name)
+
+
+sft_b, sft_c = pooled_flips("C1 SFT vs base, RoboVista overall")
+grpo_b, grpo_c = pooled_flips("GRPO vs base, RoboVista overall")
 CHURN = [
-    ("SFT vs base", 193, 247, AQUA),
-    ("GRPO vs base", 12, 36, YELLOW),
+    ("SFT vs base", sft_b, sft_c, AQUA),
+    ("GRPO vs base", grpo_b, grpo_c, YELLOW),
 ]
 fig, ax = plt.subplots(figsize=(8.6, 2.9), dpi=200)
 fig.suptitle("Answer churn on RoboVista (pooled over 3 seeds) — GRPO edits surgically",

@@ -111,27 +111,28 @@ We built a little gradio labeler showing each wrong answer next to the expert's 
 
 ## Reproduce it
 
+One command runs the entire pipeline — data export, six training runs (2 methods × 3
+seeds), all evals, calibration, statistics, error analysis, and every figure in this
+post:
+
+```bash
+pip install -r rl/requirements.txt   # torch install notes inside
+MODEL_PATH=/path/to/Qwen2-VL-7B-Instruct ./rl/reproduce.sh   # ~12 GPU-hours, one 80GB+ GPU
+```
+
 ```
 rl/
+  reproduce.sh          # the pipeline above, end to end
+  requirements.txt      # pinned training/eval environment
   export_robo2vlm.py    # stream 5.5k questions out of the 107 GB dataset
   grpo_train.py         # hand-written GRPO (LoRA, verifiable rewards, KL vs disabled adapter)
   sft_train.py          # the LoRA-SFT baseline
   stats.py              # bootstrap CIs, exact McNemar, Holm correction
   calibration_eval.py   # A–E logprob confidence, ECE, reliability data
-  error_analysis.py     # flip matrices, letter-prior shift, think-length stats
+  error_analysis.py     # flip matrices, letter-prior shift, error taxonomy
   error_labeler.py      # the gradio labeling UI
-  make_figures.py       # regenerates every figure in this post
-```
-
-```bash
-python rl/export_robo2vlm.py --train 5000 --heldout 500 --out rl_data
-PYTHONPATH=.rl-deps python rl/grpo_train.py --data-dir rl_data/train \
-    --model-path <Qwen2-VL-7B-Instruct> --output-dir rl_runs/grpo --steps 300
-PYTHONPATH=.rl-deps python rl/sft_train.py --data-dir rl_data/train \
-    --model-path <Qwen2-VL-7B-Instruct> --output-dir rl_runs/sft --epochs 2
-PYTHONPATH=.rl-deps python benchmark/run_benchmark_local.py --data-dir data_local \
-    --model-path <Qwen2-VL-7B-Instruct> --adapter rl_runs/grpo/adapter_latest --prompts standard rl
-python rl/stats.py && python rl/make_figures.py
+  data/error_labels.json  # our 102 human failure labels (the data behind the taxonomy table)
+  make_figures.py       # regenerates every figure in this post from logs + stats
 ```
 
 *Benchmarks: [RoboVista](https://berkeleyautomation.github.io/robovista/) (RSS 2026) and [Robo2VLM-1](https://huggingface.co/datasets/keplerccc/Robo2VLM-1) (Berkeley AUTOLAB). Method lineage: DeepSeek-R1's GRPO / RLVR, applied to multiple-choice robot VQA. All experiments: one shared 8×MI300X box, ROCm 6.2, no vLLM, no TRL, a 200 GB disk quota, and a lot of `rocm-smi`.*
